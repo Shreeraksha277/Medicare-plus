@@ -41,10 +41,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/doctors", async (req, res) => {
     try {
       const { specialty, location } = req.query;
+      console.log(`Searching doctors with specialty: "${specialty}", location: "${location}"`);
       const doctors = await storage.searchDoctors(
         specialty as string,
         location as string
       );
+      console.log(`Found ${doctors.length} doctors`);
       res.json(doctors);
     } catch (error) {
       res.status(500).json({ message: "Failed to search doctors" });
