@@ -5,7 +5,7 @@ import { Stethoscope, UserCheck, Calendar, Shield } from "lucide-react";
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen" style={{backgroundColor: 'white', color: 'black'}}>
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-medical-blue to-deep-blue text-white">
         <div className="max-w-7xl mx-auto px-4 py-20 text-center">
@@ -46,8 +46,8 @@ export default function Landing() {
       {/* Features Section */}
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 card-content-text">Why Choose MediCare Plus?</h2>
-          <p className="text-gray-900 max-w-2xl mx-auto card-content-text">
+          <h2 className="text-3xl font-bold mb-4" style={{color: 'black'}}>Why Choose MediCare Plus?</h2>
+          <p className="max-w-2xl mx-auto" style={{color: 'black'}}>
             Professional healthcare services with modern convenience and trusted medical expertise.
           </p>
         </div>
@@ -55,22 +55,22 @@ export default function Landing() {
           <Card className="text-center p-6 shadow-lg card-hover">
             <CardContent className="pt-6">
               <UserCheck className="text-health-green w-12 h-12 mb-4 mx-auto" />
-              <h3 className="text-xl font-semibold mb-2 card-content-text">Verified Doctors</h3>
-              <p className="text-gray-900 card-content-text">All our medical professionals are verified and certified specialists.</p>
+              <h3 className="text-xl font-semibold mb-2" style={{color: 'black'}}>Verified Doctors</h3>
+              <p style={{color: 'black'}}>All our medical professionals are verified and certified specialists.</p>
             </CardContent>
           </Card>
           <Card className="text-center p-6 shadow-lg card-hover">
             <CardContent className="pt-6">
               <Calendar className="text-medical-blue w-12 h-12 mb-4 mx-auto" />
-              <h3 className="text-xl font-semibold mb-2 card-content-text">Easy Scheduling</h3>
-              <p className="text-gray-900 card-content-text">Book appointments instantly with real-time availability updates.</p>
+              <h3 className="text-xl font-semibold mb-2" style={{color: 'black'}}>Easy Scheduling</h3>
+              <p style={{color: 'black'}}>Book appointments instantly with real-time availability updates.</p>
             </CardContent>
           </Card>
           <Card className="text-center p-6 shadow-lg card-hover">
             <CardContent className="pt-6">
               <Shield className="text-health-green w-12 h-12 mb-4 mx-auto" />
-              <h3 className="text-xl font-semibold mb-2 card-content-text">Secure & Private</h3>
-              <p className="text-gray-900 card-content-text">Your medical information is protected with enterprise-grade security.</p>
+              <h3 className="text-xl font-semibold mb-2" style={{color: 'black'}}>Secure & Private</h3>
+              <p style={{color: 'black'}}>Your medical information is protected with enterprise-grade security.</p>
             </CardContent>
           </Card>
         </div>

@@ -1,0 +1,33 @@
+/* Override CSS to ensure visibility */
+* {
+  color: black !important;
+}
+
+.text-white, .text-white * {
+  color: white !important;
+}
+
+.bg-gradient-to-br * {
+  color: white !important;
+}
+
+body {
+  background-color: white !important;
+  color: black !important;
+}
+
+.min-h-screen {
+  background-color: white !important;
+}
+
+/* Ensure buttons are visible */
+button {
+  display: inline-block !important;
+  visibility: visible !important;
+}
+
+/* Ensure icons are visible */
+svg {
+  display: inline-block !important;
+  visibility: visible !important;
+}
