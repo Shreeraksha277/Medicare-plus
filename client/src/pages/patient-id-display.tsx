@@ -1,7 +1,7 @@
 import { useLocation } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Search } from "@mui/icons-material";
+import { CheckCircle, Search } from "lucide-react";
 
 interface PatientIdDisplayProps {
   params: {
@@ -19,7 +19,7 @@ export default function PatientIdDisplay({ params }: PatientIdDisplayProps) {
         <Card className="shadow-lg text-center fade-in">
           <CardContent className="pt-8">
             <div className="bg-green-100 rounded-full p-4 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-              <CheckCircle className="text-health-green text-3xl" />
+              <CheckCircle className="text-health-green w-8 h-8" />
             </div>
             <h2 className="text-2xl font-bold text-medical-gray mb-4">Registration Successful!</h2>
             <p className="text-gray-600 mb-6">
@@ -38,7 +38,7 @@ export default function PatientIdDisplay({ params }: PatientIdDisplayProps) {
               className="w-full bg-medical-blue text-white hover:bg-deep-blue" 
               size="lg"
             >
-              <Search className="mr-2" />
+              <Search className="mr-2 w-4 h-4" />
               Find a Doctor
             </Button>
           </CardContent>

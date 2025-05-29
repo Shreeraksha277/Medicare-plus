@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Search as SearchIcon, MedicalServices, LocationOn } from "@mui/icons-material";
+import { Search as SearchIcon, Stethoscope, MapPin } from "lucide-react";
 
 const searchSchema = z.object({
   specialty: z.string().min(1, "Please select a specialty"),
@@ -55,7 +55,7 @@ export default function Search() {
       <div className="max-w-4xl mx-auto px-4">
         <Card className="shadow-lg fade-in">
           <CardHeader className="text-center pb-8">
-            <SearchIcon className="text-medical-blue text-5xl mb-4 mx-auto" />
+            <SearchIcon className="text-medical-blue w-12 h-12 mb-4 mx-auto" />
             <CardTitle className="text-3xl font-bold text-medical-gray mb-2">Find a Specialist</CardTitle>
             <p className="text-gray-600">Search for doctors by specialty and location</p>
           </CardHeader>
@@ -69,7 +69,7 @@ export default function Search() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex items-center">
-                          <MedicalServices className="mr-1 text-sm" />
+                          <Stethoscope className="mr-1 w-4 h-4" />
                           Specialty
                         </FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -96,7 +96,7 @@ export default function Search() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex items-center">
-                          <LocationOn className="mr-1 text-sm" />
+                          <MapPin className="mr-1 w-4 h-4" />
                           Area/Location
                         </FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -124,7 +124,7 @@ export default function Search() {
                   className="w-full bg-medical-blue text-white hover:bg-deep-blue" 
                   size="lg"
                 >
-                  <SearchIcon className="mr-2" />
+                  <SearchIcon className="mr-2 w-4 h-4" />
                   Search Doctors
                 </Button>
               </form>

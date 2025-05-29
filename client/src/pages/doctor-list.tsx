@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { formatCurrency } from "@/lib/utils";
 import { apiRequest } from "@/lib/queryClient";
 import { type Doctor, type InsertAppointment } from "@shared/schema";
-import { ArrowBack, Person, LocationOn, Schedule, Payments } from "@mui/icons-material";
+import { ArrowLeft, User, MapPin, Clock, DollarSign } from "lucide-react";
 
 export default function DoctorList() {
   const [, setLocation] = useLocation();
@@ -128,7 +128,7 @@ export default function DoctorList() {
             onClick={() => setLocation("/search")}
             className="flex items-center text-medical-blue hover:text-deep-blue"
           >
-            <ArrowBack className="mr-1" />
+            <ArrowLeft className="mr-1 w-4 h-4" />
             Back to Search
           </Button>
         </div>
@@ -150,21 +150,21 @@ export default function DoctorList() {
                 <div className="flex flex-col md:flex-row md:items-center justify-between">
                   <div className="flex items-start space-x-4 mb-4 md:mb-0">
                     <div className="bg-medical-blue bg-opacity-10 rounded-full p-3">
-                      <Person className="text-medical-blue text-2xl" />
+                      <User className="text-medical-blue w-6 h-6" />
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-medical-gray">{doctor.name}</h3>
                       <p className="text-medical-blue font-medium">{getSpecialtyLabel(doctor.specialty)}</p>
                       <div className="flex items-center mt-2 text-sm text-gray-600">
-                        <LocationOn className="text-sm mr-1" />
+                        <MapPin className="w-4 h-4 mr-1" />
                         {doctor.hospital}
                       </div>
                       <div className="flex items-center mt-1 text-sm text-gray-600">
-                        <Schedule className="text-sm mr-1" />
+                        <Clock className="w-4 h-4 mr-1" />
                         {doctor.schedule}
                       </div>
                       <div className="flex items-center mt-1 text-sm text-gray-600">
-                        <Payments className="text-sm mr-1" />
+                        <DollarSign className="w-4 h-4 mr-1" />
                         Consultation: {formatCurrency(doctor.consultationFee)}
                       </div>
                     </div>

@@ -11,7 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { validatePatientId } from "@/lib/utils";
-import { Login as LoginIcon, Badge } from "@mui/icons-material";
+import { LogIn, IdCard } from "lucide-react";
 
 const loginSchema = z.object({
   patientId: z.string().min(1, "Patient ID is required").refine(validatePatientId, {
@@ -64,7 +64,7 @@ export default function Login() {
       <div className="max-w-md mx-auto px-4">
         <Card className="shadow-lg fade-in">
           <CardHeader className="text-center pb-8">
-            <LoginIcon className="text-medical-blue text-5xl mb-4 mx-auto" />
+            <LogIn className="text-medical-blue w-12 h-12 mb-4 mx-auto" />
             <CardTitle className="text-3xl font-bold text-medical-gray mb-2">Patient Login</CardTitle>
             <p className="text-gray-600">Enter your Patient ID to continue</p>
           </CardHeader>
@@ -77,7 +77,7 @@ export default function Login() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="flex items-center">
-                        <Badge className="mr-1 text-sm" />
+                        <IdCard className="mr-1 w-4 h-4" />
                         Patient ID
                       </FormLabel>
                       <FormControl>
@@ -98,7 +98,7 @@ export default function Login() {
                   size="lg"
                   disabled={loginMutation.isPending}
                 >
-                  <LoginIcon className="mr-2" />
+                  <LogIn className="mr-2 w-4 h-4" />
                   {loginMutation.isPending ? "Logging in..." : "Login"}
                 </Button>
               </form>
