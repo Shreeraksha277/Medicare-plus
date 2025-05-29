@@ -80,24 +80,9 @@
     color: #000000 !important;
   }
   
-  /* Force text visibility for main content areas */
-  .min-h-screen:not(.bg-gradient-to-br) h1, 
-  .min-h-screen:not(.bg-gradient-to-br) h2, 
-  .min-h-screen:not(.bg-gradient-to-br) h3, 
-  .min-h-screen:not(.bg-gradient-to-br) h4, 
-  .min-h-screen:not(.bg-gradient-to-br) h5, 
-  .min-h-screen:not(.bg-gradient-to-br) h6, 
-  .min-h-screen:not(.bg-gradient-to-br) p, 
-  .min-h-screen:not(.bg-gradient-to-br) span:not(.text-white), 
-  .min-h-screen:not(.bg-gradient-to-br) label, 
-  .min-h-screen:not(.bg-gradient-to-br) div:not(.bg-gradient-to-br) {
+  /* Simple text visibility fixes */
+  .card-content-text {
     color: #000000 !important;
-  }
-  
-  .text-white, .text-white *, 
-  .bg-gradient-to-br .text-white,
-  .bg-gradient-to-br .text-white * {
-    color: #ffffff !important;
   }
   
   .bg-medical-blue {
