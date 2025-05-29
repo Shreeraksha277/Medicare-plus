@@ -1,34 +1,3 @@
-/* Simple override to fix visibility */
-body {
-  background: white;
-  color: black;
-}
-
-/* Reset all text to black except for specific white text areas */
-h1, h2, h3, h4, h5, h6, p, span, div, a, button {
-  color: black;
-}
-
-/* Keep white text in hero section */
-.bg-gradient-to-br h1,
-.bg-gradient-to-br p,
-.bg-gradient-to-br button {
-  color: white;
-}
-
-/* Ensure navbar text is black */
-nav span, nav button {
-  color: black;
-}
-
-/* Force visibility of all elements */
 * {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Ensure cards have white background */
-.card, [data-testid="card"] {
-  background: white;
-  color: black;
+  color: black !important;
 }
