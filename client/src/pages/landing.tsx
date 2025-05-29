@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart, UserCheck, Calendar, Shield } from "lucide-react";
+import { Stethoscope, UserCheck, Calendar, Shield } from "lucide-react";
 
 export default function Landing() {
   return (

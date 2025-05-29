@@ -43,11 +43,12 @@ export default function Search() {
   ];
 
   const locations = [
-    { value: "downtown", label: "Downtown Medical District" },
-    { value: "north", label: "North Central" },
-    { value: "south", label: "South Bay" },
-    { value: "east", label: "East Valley" },
-    { value: "west", label: "West Hills" },
+    { value: "mysuru", label: "Mysuru" },
+    { value: "bangalore", label: "Bangalore" },
+    { value: "udupi", label: "Udupi" },
+    { value: "shivamogga", label: "Shivamogga" },
+    { value: "davangere", label: "Davangere" },
+    { value: "ballari", label: "Ballari" },
   ];
 
   return (

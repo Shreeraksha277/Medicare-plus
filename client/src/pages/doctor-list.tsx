@@ -89,11 +89,12 @@ export default function DoctorList() {
 
   const getLocationLabel = (value: string) => {
     const locations: Record<string, string> = {
-      downtown: "Downtown Medical District",
-      north: "North Central",
-      south: "South Bay",
-      east: "East Valley",
-      west: "West Hills",
+      mysuru: "Mysuru",
+      bangalore: "Bangalore",
+      udupi: "Udupi",
+      shivamogga: "Shivamogga",
+      davangere: "Davangere",
+      ballari: "Ballari",
     };
     return locations[value] || value;
   };
