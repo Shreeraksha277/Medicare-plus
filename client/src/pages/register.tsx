@@ -12,7 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useToast } from "@/hooks/use-toast";
 import { insertPatientSchema, type InsertPatient, type Patient } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
-import { PersonAdd, Person, Cake, BloodType, Phone, MonitorWeight, Height } from "@mui/icons-material";
+import { UserPlus, User, Calendar, Droplet, Phone, Weight, Ruler } from "lucide-react";
 
 export default function Register() {
   const [, setLocation] = useLocation();
@@ -60,7 +60,7 @@ export default function Register() {
       <div className="max-w-2xl mx-auto px-4">
         <Card className="shadow-lg fade-in">
           <CardHeader className="text-center pb-8">
-            <PersonAdd className="text-medical-blue text-5xl mb-4 mx-auto" />
+            <UserPlus className="text-medical-blue w-12 h-12 mb-4 mx-auto" />
             <CardTitle className="text-3xl font-bold text-medical-gray mb-2">Patient Registration</CardTitle>
             <p className="text-gray-600">Create your patient profile to get started</p>
           </CardHeader>
@@ -74,7 +74,7 @@ export default function Register() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex items-center">
-                          <Person className="mr-1 text-sm" />
+                          <User className="mr-1 w-4 h-4" />
                           Full Name
                         </FormLabel>
                         <FormControl>
@@ -90,7 +90,7 @@ export default function Register() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex items-center">
-                          <Cake className="mr-1 text-sm" />
+                          <Calendar className="mr-1 w-4 h-4" />
                           Date of Birth
                         </FormLabel>
                         <FormControl>
@@ -109,7 +109,7 @@ export default function Register() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex items-center">
-                          <BloodType className="mr-1 text-sm" />
+                          <Droplet className="mr-1 w-4 h-4" />
                           Blood Group
                         </FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -139,7 +139,7 @@ export default function Register() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex items-center">
-                          <Phone className="mr-1 text-sm" />
+                          <Phone className="mr-1 w-4 h-4" />
                           Phone Number
                         </FormLabel>
                         <FormControl>
@@ -158,7 +158,7 @@ export default function Register() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex items-center">
-                          <MonitorWeight className="mr-1 text-sm" />
+                          <Weight className="mr-1 w-4 h-4" />
                           Weight (kg)
                         </FormLabel>
                         <FormControl>
@@ -180,7 +180,7 @@ export default function Register() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex items-center">
-                          <Height className="mr-1 text-sm" />
+                          <Ruler className="mr-1 w-4 h-4" />
                           Height (cm)
                         </FormLabel>
                         <FormControl>
@@ -203,7 +203,7 @@ export default function Register() {
                   size="lg"
                   disabled={registerMutation.isPending}
                 >
-                  <PersonAdd className="mr-2" />
+                  <UserPlus className="mr-2 w-4 h-4" />
                   {registerMutation.isPending ? "Registering..." : "Register Patient"}
                 </Button>
               </form>
