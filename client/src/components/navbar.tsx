@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Hospital } from "lucide-react";
+import { Stethoscope } from "lucide-react";
 
 export default function Navbar() {
   const [location] = useLocation();
@@ -10,14 +10,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center">
-            <Hospital className="text-medical-blue text-3xl mr-2" />
-            <span className="text-xl font-bold text-medical-gray">MediCare Connect</span>
+            <Stethoscope className="text-medical-blue text-3xl mr-2" />
+            <span className="text-xl font-bold text-black">MediCare Plus</span>
           </Link>
           <div className="hidden md:flex space-x-4">
             <Link href="/">
               <Button 
                 variant="ghost" 
-                className={`text-medical-gray hover:text-medical-blue ${location === '/' ? 'text-medical-blue' : ''}`}
+                className={`text-black hover:text-medical-blue ${location === '/' ? 'text-medical-blue' : ''}`}
               >
                 Home
               </Button>
@@ -25,7 +25,7 @@ export default function Navbar() {
             <Link href="/login">
               <Button 
                 variant="ghost" 
-                className={`text-medical-gray hover:text-medical-blue ${location === '/login' ? 'text-medical-blue' : ''}`}
+                className={`text-black hover:text-medical-blue ${location === '/login' ? 'text-medical-blue' : ''}`}
               >
                 Login
               </Button>

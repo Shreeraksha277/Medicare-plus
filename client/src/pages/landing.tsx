@@ -13,10 +13,10 @@ export default function Landing() {
             {/* Medical logo display */}
             <div className="flex justify-center items-center mb-8">
               <div className="bg-white rounded-full p-8 shadow-2xl">
-                <Heart className="text-medical-blue" size={120} />
+                <Stethoscope className="text-medical-blue" size={120} />
               </div>
             </div>
-            <h1 className="text-5xl font-bold mb-6">MediCare Connect</h1>
+            <h1 className="text-5xl font-bold mb-6">MediCare Plus</h1>
             <p className="text-xl mb-8 max-w-2xl mx-auto">
               Your trusted partner in healthcare. Connect with qualified specialists and book appointments with ease.
             </p>

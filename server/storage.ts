@@ -34,9 +34,9 @@ export class MemStorage implements IStorage {
         name: "Dr. Sarah Chen",
         specialty: "cardiology",
         hospital: "City General Hospital",
-        location: "downtown",
+        location: "bangalore",
         schedule: "Mon-Fri: 9:00 AM - 5:00 PM",
-        consultationFee: 150,
+        consultationFee: 1200,
         availability: "available"
       },
       {
@@ -44,9 +44,9 @@ export class MemStorage implements IStorage {
         name: "Dr. Michael Rodriguez",
         specialty: "cardiology",
         hospital: "Heart Care Clinic",
-        location: "downtown",
+        location: "mysuru",
         schedule: "Mon-Sat: 8:00 AM - 6:00 PM",
-        consultationFee: 120,
+        consultationFee: 1000,
         availability: "next-day"
       },
       {
@@ -54,9 +54,9 @@ export class MemStorage implements IStorage {
         name: "Dr. Emily Johnson",
         specialty: "cardiology",
         hospital: "Metropolitan Medical Center",
-        location: "downtown",
+        location: "bangalore",
         schedule: "Tue-Thu: 10:00 AM - 4:00 PM",
-        consultationFee: 180,
+        consultationFee: 1500,
         availability: "available"
       },
       {
@@ -64,9 +64,9 @@ export class MemStorage implements IStorage {
         name: "Dr. James Wilson",
         specialty: "dermatology",
         hospital: "Skin Care Institute",
-        location: "north",
+        location: "udupi",
         schedule: "Mon-Fri: 8:00 AM - 4:00 PM",
-        consultationFee: 130,
+        consultationFee: 1100,
         availability: "available"
       },
       {
@@ -74,9 +74,9 @@ export class MemStorage implements IStorage {
         name: "Dr. Lisa Patel",
         specialty: "neurology",
         hospital: "Brain & Spine Center",
-        location: "south",
+        location: "shivamogga",
         schedule: "Tue-Sat: 9:00 AM - 5:00 PM",
-        consultationFee: 200,
+        consultationFee: 1600,
         availability: "next-day"
       },
       {
@@ -84,9 +84,9 @@ export class MemStorage implements IStorage {
         name: "Dr. Robert Brown",
         specialty: "orthopedics",
         hospital: "Joint & Bone Clinic",
-        location: "east",
+        location: "davangere",
         schedule: "Mon-Fri: 7:00 AM - 6:00 PM",
-        consultationFee: 175,
+        consultationFee: 1400,
         availability: "available"
       },
       {
@@ -94,9 +94,9 @@ export class MemStorage implements IStorage {
         name: "Dr. Maria Garcia",
         specialty: "pediatrics",
         hospital: "Children's Health Center",
-        location: "west",
+        location: "ballari",
         schedule: "Mon-Sat: 8:00 AM - 7:00 PM",
-        consultationFee: 110,
+        consultationFee: 900,
         availability: "available"
       },
       {
@@ -104,9 +104,9 @@ export class MemStorage implements IStorage {
         name: "Dr. David Kim",
         specialty: "psychiatry",
         hospital: "Mental Health Institute",
-        location: "north",
+        location: "udupi",
         schedule: "Mon-Fri: 9:00 AM - 6:00 PM",
-        consultationFee: 160,
+        consultationFee: 1300,
         availability: "next-day"
       },
       {
@@ -114,9 +114,9 @@ export class MemStorage implements IStorage {
         name: "Dr. Jennifer Taylor",
         specialty: "general",
         hospital: "Family Practice Center",
-        location: "south",
+        location: "mysuru",
         schedule: "Mon-Sun: 6:00 AM - 10:00 PM",
-        consultationFee: 90,
+        consultationFee: 700,
         availability: "available"
       }
     ];
