@@ -1,33 +1,34 @@
-/* Override CSS to ensure visibility */
-* {
-  color: black !important;
-}
-
-.text-white, .text-white * {
-  color: white !important;
-}
-
-.bg-gradient-to-br * {
-  color: white !important;
-}
-
+/* Simple override to fix visibility */
 body {
-  background-color: white !important;
-  color: black !important;
+  background: white;
+  color: black;
 }
 
-.min-h-screen {
-  background-color: white !important;
+/* Reset all text to black except for specific white text areas */
+h1, h2, h3, h4, h5, h6, p, span, div, a, button {
+  color: black;
 }
 
-/* Ensure buttons are visible */
-button {
-  display: inline-block !important;
-  visibility: visible !important;
+/* Keep white text in hero section */
+.bg-gradient-to-br h1,
+.bg-gradient-to-br p,
+.bg-gradient-to-br button {
+  color: white;
 }
 
-/* Ensure icons are visible */
-svg {
-  display: inline-block !important;
-  visibility: visible !important;
+/* Ensure navbar text is black */
+nav span, nav button {
+  color: black;
+}
+
+/* Force visibility of all elements */
+* {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Ensure cards have white background */
+.card, [data-testid="card"] {
+  background: white;
+  color: black;
 }
