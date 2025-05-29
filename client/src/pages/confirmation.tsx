@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { formatDate, formatCurrency } from "@/lib/utils";
 import { type Appointment } from "@shared/schema";
-import { CheckCircle, Download, Search } from "@mui/icons-material";
+import { CheckCircle, Download, Search } from "lucide-react";
 
 interface ConfirmationProps {
   params: {
@@ -78,7 +78,7 @@ export default function Confirmation({ params }: ConfirmationProps) {
           <CardContent className="pt-8">
             <div className="text-center mb-8">
               <div className="bg-green-100 rounded-full p-4 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-                <CheckCircle className="text-health-green text-3xl" />
+                <CheckCircle className="text-health-green w-8 h-8" />
               </div>
               <h2 className="text-3xl font-bold text-medical-gray mb-2">Appointment Confirmed!</h2>
               <p className="text-gray-600">Your appointment has been successfully booked</p>
@@ -138,7 +138,7 @@ export default function Confirmation({ params }: ConfirmationProps) {
                 className="w-full bg-health-green text-white hover:bg-green-600" 
                 size="lg"
               >
-                <Download className="mr-2" />
+                <Download className="mr-2 w-4 h-4" />
                 Download Receipt
               </Button>
               <Button 

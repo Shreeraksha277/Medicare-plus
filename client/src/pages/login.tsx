@@ -38,6 +38,7 @@ export default function Login() {
       return response.json();
     },
     onSuccess: () => {
+      sessionStorage.setItem("currentPatientId", form.getValues().patientId);
       toast({
         title: "Login Successful",
         description: "Welcome back to MediCare Connect.",
