@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 11% 98%; /* #F5F7FA */
+  --foreground: 222 84% 5%; /* #0F0F0F */
+  --muted: 210 40% 96%; /* #F1F5F9 */
+  --muted-foreground: 215 16% 47%; /* #64748B */
+  --popover: 0 0% 100%; /* #FFFFFF */
+  --popover-foreground: 222 84% 5%; /* #0F0F0F */
+  --card: 0 0% 100%; /* #FFFFFF */
+  --card-foreground: 222 84% 5%; /* #0F0F0F */
+  --border: 214 32% 91%; /* #E2E8F0 */
+  --input: 214 32% 91%; /* #E2E8F0 */
+  --primary: 207 90% 54%; /* #1976D2 - Medical Blue */
+  --primary-foreground: 210 40% 98%; /* #F8FAFC */
+  --secondary: 210 40% 96%; /* #F1F5F9 */
+  --secondary-foreground: 222 84% 5%; /* #0F0F0F */
+  --accent: 210 40% 96%; /* #F1F5F9 */
+  --accent-foreground: 222 84% 5%; /* #0F0F0F */
+  --destructive: 0 84% 60%; /* #EF4444 */
+  --destructive-foreground: 210 40% 98%; /* #F8FAFC */
+  --ring: 207 90% 54%; /* #1976D2 */
+  --radius: 0.5rem;
+  
+  /* Medical theme colors */
+  --medical-blue: 207 90% 54%; /* #1976D2 */
+  --health-green: 122 39% 49%; /* #388E3C */
+  --deep-blue: 199 89% 48%; /* #0277BD */
+  --medical-gray: 210 7% 26%; /* #424242 */
+}
+
+.dark {
+  --background: 222 84% 5%; /* #0F0F0F */
+  --foreground: 210 40% 98%; /* #F8FAFC */
+  --muted: 217 33% 17%; /* #1E293B */
+  --muted-foreground: 215 20% 65%; /* #94A3B8 */
+  --popover: 222 84% 5%; /* #0F0F0F */
+  --popover-foreground: 210 40% 98%; /* #F8FAFC */
+  --card: 222 84% 5%; /* #0F0F0F */
+  --card-foreground: 210 40% 98%; /* #F8FAFC */
+  --border: 217 33% 17%; /* #1E293B */
+  --input: 217 33% 17%; /* #1E293B */
+  --primary: 207 90% 54%; /* #1976D2 */
+  --primary-foreground: 222 84% 5%; /* #0F0F0F */
+  --secondary: 217 33% 17%; /* #1E293B */
+  --secondary-foreground: 210 40% 98%; /* #F8FAFC */
+  --accent: 217 33% 17%; /* #1E293B */
+  --accent-foreground: 210 40% 98%; /* #F8FAFC */
+  --destructive: 0 63% 31%; /* #7F1D1D */
+  --destructive-foreground: 210 40% 98%; /* #F8FAFC */
+  --ring: 207 90% 54%; /* #1976D2 */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .medical-blue {
+    color: hsl(var(--medical-blue));
+  }
+  
+  .health-green {
+    color: hsl(var(--health-green));
+  }
+  
+  .deep-blue {
+    color: hsl(var(--deep-blue));
+  }
+  
+  .medical-gray {
+    color: hsl(var(--medical-gray));
+  }
+  
+  .bg-medical-blue {
+    background-color: hsl(var(--medical-blue));
+  }
+  
+  .bg-health-green {
+    background-color: hsl(var(--health-green));
+  }
+  
+  .bg-deep-blue {
+    background-color: hsl(var(--deep-blue));
+  }
+  
+  .bg-medical-gray {
+    background-color: hsl(var(--medical-gray));
+  }
+  
+  .border-medical-blue {
+    border-color: hsl(var(--medical-blue));
+  }
+  
+  .text-medical-blue {
+    color: hsl(var(--medical-blue));
+  }
+  
+  .text-health-green {
+    color: hsl(var(--health-green));
+  }
+  
+  .text-deep-blue {
+    color: hsl(var(--deep-blue));
+  }
+  
+  .text-medical-gray {
+    color: hsl(var(--medical-gray));
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+  
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  }
+}
