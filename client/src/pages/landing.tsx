@@ -55,22 +55,22 @@ export default function Landing() {
           <Card className="text-center p-6 shadow-lg card-hover">
             <CardContent className="pt-6">
               <UserCheck className="text-health-green w-12 h-12 mb-4 mx-auto" />
-              <h3 className="text-xl font-semibold mb-2">Verified Doctors</h3>
-              <p className="text-gray-600">All our medical professionals are verified and certified specialists.</p>
+              <h3 className="text-xl font-semibold mb-2 text-black">Verified Doctors</h3>
+              <p className="text-gray-700">All our medical professionals are verified and certified specialists.</p>
             </CardContent>
           </Card>
           <Card className="text-center p-6 shadow-lg card-hover">
             <CardContent className="pt-6">
               <Calendar className="text-medical-blue w-12 h-12 mb-4 mx-auto" />
-              <h3 className="text-xl font-semibold mb-2">Easy Scheduling</h3>
-              <p className="text-gray-600">Book appointments instantly with real-time availability updates.</p>
+              <h3 className="text-xl font-semibold mb-2 text-black">Easy Scheduling</h3>
+              <p className="text-gray-700">Book appointments instantly with real-time availability updates.</p>
             </CardContent>
           </Card>
           <Card className="text-center p-6 shadow-lg card-hover">
             <CardContent className="pt-6">
               <Shield className="text-health-green w-12 h-12 mb-4 mx-auto" />
-              <h3 className="text-xl font-semibold mb-2">Secure & Private</h3>
-              <p className="text-gray-600">Your medical information is protected with enterprise-grade security.</p>
+              <h3 className="text-xl font-semibold mb-2 text-black">Secure & Private</h3>
+              <p className="text-gray-700">Your medical information is protected with enterprise-grade security.</p>
             </CardContent>
           </Card>
         </div>
