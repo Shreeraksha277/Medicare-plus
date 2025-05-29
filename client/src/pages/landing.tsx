@@ -5,7 +5,7 @@ import { Stethoscope, UserCheck, Calendar, Shield } from "lucide-react";
 
 export default function Landing() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white text-black">
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-medical-blue to-deep-blue text-white">
         <div className="max-w-7xl mx-auto px-4 py-20 text-center">

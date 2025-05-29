@@ -61,7 +61,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-8 bg-white">
       <div className="max-w-md mx-auto px-4">
         <Card className="shadow-lg fade-in">
           <CardHeader className="text-center pb-8">
