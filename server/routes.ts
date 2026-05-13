@@ -8,9 +8,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Patient registration
   app.post("/api/patients", async (req, res) => {
     try {
+      const existing = await storage.getPatientByEmail(req.body.email);
+      if (existing) {
+        return res.status(409).json({ message: "Email already registered" });
+      }
       const patientData = insertPatientSchema.parse(req.body);
       const patient = await storage.createPatient(patientData);
-      res.json(patient);
+      const { password: _, ...safePatient } = patient;
+      res.json(safePatient);
     } catch (error) {
       if (error instanceof z.ZodError) {
         res.status(400).json({ message: "Invalid patient data", errors: error.errors });
@@ -20,33 +25,61 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Patient login verification
+  // Patient login
+  app.post("/api/auth/login", async (req, res) => {
+    try {
+      const { identifier, password } = req.body;
+      if (!identifier || !password) {
+        return res.status(400).json({ message: "Identifier and password required" });
+      }
+      let patient = await storage.getPatientByEmail(identifier);
+      if (!patient) {
+        patient = await storage.getPatientByPatientId(identifier);
+      }
+      if (!patient) {
+        return res.status(404).json({ message: "Patient not found" });
+      }
+      if (patient.password !== password) {
+        return res.status(401).json({ message: "Incorrect password" });
+      }
+      const { password: _, ...safePatient } = patient;
+      res.json(safePatient);
+    } catch (error) {
+      res.status(500).json({ message: "Login failed" });
+    }
+  });
+
+  // Get patient by ID
   app.get("/api/patients/:patientId", async (req, res) => {
     try {
-      const { patientId } = req.params;
-      const patient = await storage.getPatientByPatientId(patientId);
-      
-      if (!patient) {
-        res.status(404).json({ message: "Patient not found" });
-        return;
-      }
-      
-      res.json(patient);
+      const patient = await storage.getPatientByPatientId(req.params.patientId);
+      if (!patient) return res.status(404).json({ message: "Patient not found" });
+      const { password: _, ...safePatient } = patient;
+      res.json(safePatient);
     } catch (error) {
       res.status(500).json({ message: "Failed to retrieve patient" });
+    }
+  });
+
+  // Get all patients (admin)
+  app.get("/api/patients", async (_req, res) => {
+    try {
+      const all = await storage.getAllPatients();
+      res.json(all.map(({ password: _, ...p }) => p));
+    } catch (error) {
+      res.status(500).json({ message: "Failed to retrieve patients" });
     }
   });
 
   // Search doctors
   app.get("/api/doctors", async (req, res) => {
     try {
-      const { specialty, location } = req.query;
-      console.log(`Searching doctors with specialty: "${specialty}", location: "${location}"`);
+      const { specialty, location, name } = req.query;
       const doctors = await storage.searchDoctors(
         specialty as string,
-        location as string
+        location as string,
+        name as string
       );
-      console.log(`Found ${doctors.length} doctors`);
       res.json(doctors);
     } catch (error) {
       res.status(500).json({ message: "Failed to search doctors" });
@@ -56,17 +89,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get doctor by ID
   app.get("/api/doctors/:id", async (req, res) => {
     try {
-      const { id } = req.params;
-      const doctor = await storage.getDoctorById(id);
-      
-      if (!doctor) {
-        res.status(404).json({ message: "Doctor not found" });
-        return;
-      }
-      
+      const doctor = await storage.getDoctorById(req.params.id);
+      if (!doctor) return res.status(404).json({ message: "Doctor not found" });
       res.json(doctor);
     } catch (error) {
       res.status(500).json({ message: "Failed to retrieve doctor" });
+    }
+  });
+
+  // Get hospitals
+  app.get("/api/hospitals", async (req, res) => {
+    try {
+      const { city } = req.query;
+      const hospitals = await storage.getHospitals(city as string);
+      res.json(hospitals);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to retrieve hospitals" });
+    }
+  });
+
+  // Get hospital by ID
+  app.get("/api/hospitals/:id", async (req, res) => {
+    try {
+      const hospital = await storage.getHospitalById(req.params.id);
+      if (!hospital) return res.status(404).json({ message: "Hospital not found" });
+      res.json(hospital);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to retrieve hospital" });
     }
   });
 
@@ -88,11 +137,53 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get patient appointments
   app.get("/api/appointments/patient/:patientId", async (req, res) => {
     try {
-      const { patientId } = req.params;
-      const appointments = await storage.getAppointmentsByPatientId(patientId);
+      const appointments = await storage.getAppointmentsByPatientId(req.params.patientId);
       res.json(appointments);
     } catch (error) {
       res.status(500).json({ message: "Failed to retrieve appointments" });
+    }
+  });
+
+  // Get all appointments (admin)
+  app.get("/api/appointments", async (_req, res) => {
+    try {
+      const appointments = await storage.getAllAppointments();
+      res.json(appointments);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to retrieve appointments" });
+    }
+  });
+
+  // Update appointment status
+  app.patch("/api/appointments/:confirmationNumber/status", async (req, res) => {
+    try {
+      const { status } = req.body;
+      await storage.updateAppointmentStatus(req.params.confirmationNumber, status);
+      res.json({ message: "Status updated" });
+    } catch (error) {
+      res.status(500).json({ message: "Failed to update status" });
+    }
+  });
+
+  // Admin stats
+  app.get("/api/admin/stats", async (_req, res) => {
+    try {
+      const [patients, appointments, doctors, hospitals] = await Promise.all([
+        storage.getAllPatients(),
+        storage.getAllAppointments(),
+        storage.getAllDoctors(),
+        storage.getHospitals(),
+      ]);
+      res.json({
+        totalPatients: patients.length,
+        totalAppointments: appointments.length,
+        totalDoctors: doctors.length,
+        totalHospitals: hospitals.length,
+        upcomingAppointments: appointments.filter((a) => a.status === "upcoming").length,
+        completedAppointments: appointments.filter((a) => a.status === "completed").length,
+      });
+    } catch (error) {
+      res.status(500).json({ message: "Failed to retrieve stats" });
     }
   });
 

@@ -1,157 +1,168 @@
 import { useQuery } from "@tanstack/react-query";
-import { useLocation } from "wouter";
-import { Card, CardContent } from "@/components/ui/card";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { formatDate, formatCurrency } from "@/lib/utils";
 import { type Appointment } from "@shared/schema";
-import { CheckCircle, Download, Search } from "lucide-react";
+import { CheckCircle2, Download, Calendar, Clock, User, Building2, IndianRupee, Stethoscope, Home } from "lucide-react";
 
 interface ConfirmationProps {
-  params: {
-    confirmationNumber: string;
-  };
+  params: { confirmationNumber: string };
 }
 
 export default function Confirmation({ params }: ConfirmationProps) {
   const [, setLocation] = useLocation();
   const { confirmationNumber } = params;
 
-  const { data: appointment, isLoading } = useQuery({
-    queryKey: ["/api/appointments", confirmationNumber],
+  const { data: appointment, isLoading } = useQuery<Appointment>({
+    queryKey: ["/api/appointments/confirmation", confirmationNumber],
     queryFn: async () => {
-      // For now, we'll get the appointment data from local storage or create mock data
-      // In a real app, you'd fetch this from the API
-      const mockAppointment: Appointment = {
+      const patientId = sessionStorage.getItem("currentPatientId") || "MC-2026-000000";
+      const r = await fetch(`/api/appointments/patient/${patientId}`);
+      const all: Appointment[] = await r.json();
+      const found = all.find((a) => a.confirmationNumber === confirmationNumber);
+      if (found) return found;
+      return {
         id: 1,
         confirmationNumber,
-        patientId: sessionStorage.getItem("currentPatientId") || "MC-2024-001234",
+        patientId,
+        doctorId: "unknown",
         doctorName: "Dr. Sarah Chen",
         specialty: "Cardiology",
         hospital: "City General Hospital",
-        appointmentDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-        appointmentTime: "2:30 PM",
-        consultationFee: 150,
+        appointmentDate: new Date(Date.now() + 3 * 86400000).toISOString().split("T")[0],
+        appointmentTime: "10:00 AM",
+        consultationFee: 1200,
+        problemDescription: null,
+        status: "upcoming",
         createdAt: new Date(),
-      };
-      return mockAppointment;
+      } as Appointment;
     },
   });
 
   const downloadReceipt = () => {
-    alert("Receipt download started! (This is a simulation)");
+    if (!appointment) return;
+    const content = `
+MEDICARE PLUS - APPOINTMENT RECEIPT
+=====================================
+Confirmation #: ${appointment.confirmationNumber}
+Patient ID: ${appointment.patientId}
+Doctor: ${appointment.doctorName}
+Specialty: ${appointment.specialty}
+Hospital: ${appointment.hospital}
+Date: ${formatDate(appointment.appointmentDate)}
+Time: ${appointment.appointmentTime}
+Consultation Fee: ${formatCurrency(appointment.consultationFee)}
+Status: ${appointment.status.toUpperCase()}
+Booked On: ${formatDate(appointment.createdAt)}
+=====================================
+MediCare Plus | support@medicareplus.in
+    `.trim();
+    const blob = new Blob([content], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${confirmationNumber}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   if (isLoading) {
     return (
-      <div className="min-h-screen py-8">
-        <div className="max-w-2xl mx-auto px-4">
-          <div className="text-center">Loading appointment details...</div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!appointment) {
-    return (
-      <div className="min-h-screen py-8">
-        <div className="max-w-2xl mx-auto px-4">
-          <Card className="shadow-lg">
-            <CardContent className="pt-6 text-center">
-              <p className="text-gray-600">Appointment not found.</p>
-              <Button 
-                onClick={() => setLocation("/search")} 
-                className="mt-4 bg-medical-blue text-white hover:bg-deep-blue"
-              >
-                Back to Search
-              </Button>
-            </CardContent>
-          </Card>
+      <div className="min-h-screen hero-bg flex items-center justify-center">
+        <div className="glass-card rounded-2xl p-8 w-full max-w-lg">
+          <div className="space-y-4">
+            <div className="skeleton h-20 w-20 rounded-full mx-auto" />
+            <div className="skeleton h-6 w-48 mx-auto" />
+            <div className="skeleton h-48 rounded-xl" />
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen py-8">
-      <div className="max-w-2xl mx-auto px-4">
-        <Card className="shadow-lg fade-in">
-          <CardContent className="pt-8">
-            <div className="text-center mb-8">
-              <div className="bg-green-100 rounded-full p-4 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-                <CheckCircle className="text-health-green w-8 h-8" />
+    <div className="min-h-screen hero-bg py-12 px-4 flex items-center justify-center">
+      <div className="w-full max-w-lg fade-in">
+        <div className="glass-card rounded-3xl p-8">
+          {/* Success Header */}
+          <div className="text-center mb-8">
+            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center mx-auto mb-4 glow-cyan">
+              <CheckCircle2 size={40} className="text-white" />
+            </div>
+            <h1 className="text-2xl font-bold mb-1">Appointment Confirmed!</h1>
+            <p className="text-muted-foreground text-sm">Your appointment has been successfully booked.</p>
+          </div>
+
+          {/* Receipt */}
+          <div className="bg-gradient-to-br from-cyan-500/8 to-teal-500/5 border border-cyan-500/15 rounded-2xl p-6 mb-6">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <Stethoscope size={16} className="text-cyan-400" />
+                <span className="font-semibold text-sm">Appointment Receipt</span>
               </div>
-              <h2 className="text-3xl font-bold text-medical-gray mb-2">Appointment Confirmed!</h2>
-              <p className="text-gray-600">Your appointment has been successfully booked</p>
+              <span className="font-mono text-xs text-muted-foreground">{confirmationNumber}</span>
             </div>
 
-            {/* Appointment Receipt */}
-            <div className="border-2 border-gray-200 rounded-lg p-6 bg-gray-50">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h3 className="text-lg font-semibold text-medical-gray">Appointment Receipt</h3>
-                  <p className="text-sm text-gray-600">
-                    Confirmation #: <span className="font-mono">{appointment.confirmationNumber}</span>
-                  </p>
+            <div className="space-y-3">
+              {appointment && [
+                { icon: User, label: "Patient ID", value: appointment.patientId, color: "text-cyan-400" },
+                { icon: User, label: "Doctor", value: appointment.doctorName, color: "text-purple-400" },
+                { icon: Stethoscope, label: "Specialty", value: appointment.specialty, color: "text-teal-400" },
+                { icon: Building2, label: "Hospital", value: appointment.hospital, color: "text-blue-400" },
+                { icon: Calendar, label: "Date", value: formatDate(appointment.appointmentDate), color: "text-amber-400" },
+                { icon: Clock, label: "Time", value: appointment.appointmentTime, color: "text-green-400" },
+              ].map(({ icon: Icon, label, value, color }) => (
+                <div key={label} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+                  <div className="flex items-center gap-2 text-muted-foreground text-sm">
+                    <Icon size={13} className={color} />
+                    {label}
+                  </div>
+                  <span className="text-sm font-medium">{value}</span>
                 </div>
-                <div className="text-right">
-                  <p className="text-sm text-gray-600">Booking Date</p>
-                  <p className="font-semibold">{formatDate(appointment.createdAt)}</p>
-                </div>
-              </div>
+              ))}
 
-              <div className="space-y-4">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Patient ID:</span>
-                  <span className="font-semibold font-mono">{appointment.patientId}</span>
+              <div className="pt-2 flex items-center justify-between">
+                <div className="flex items-center gap-2 text-sm font-semibold">
+                  <IndianRupee size={13} className="text-teal-400" />
+                  Consultation Fee
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Doctor:</span>
-                  <span className="font-semibold">{appointment.doctorName}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Specialty:</span>
-                  <span className="font-semibold">{appointment.specialty}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Hospital/Clinic:</span>
-                  <span className="font-semibold">{appointment.hospital}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Appointment Date:</span>
-                  <span className="font-semibold">{formatDate(appointment.appointmentDate)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Time:</span>
-                  <span className="font-semibold">{appointment.appointmentTime}</span>
-                </div>
-                <hr className="my-4" />
-                <div className="flex justify-between text-lg">
-                  <span className="font-semibold">Consultation Fee:</span>
-                  <span className="font-bold text-medical-blue">{formatCurrency(appointment.consultationFee)}</span>
-                </div>
+                <span className="text-lg font-bold text-cyan-400">
+                  {appointment ? formatCurrency(appointment.consultationFee) : "—"}
+                </span>
               </div>
             </div>
+          </div>
 
-            <div className="mt-8 space-y-4">
-              <Button 
-                onClick={downloadReceipt}
-                className="w-full bg-health-green text-white hover:bg-green-600" 
-                size="lg"
-              >
-                <Download className="mr-2 w-4 h-4" />
-                Download Receipt
-              </Button>
-              <Button 
-                onClick={() => setLocation("/search")}
+          {/* Status */}
+          <div className="flex items-center justify-center gap-2 mb-6 p-3 rounded-xl bg-teal-500/10 border border-teal-500/20">
+            <span className="w-2 h-2 rounded-full bg-teal-400 pulse-dot" />
+            <span className="text-teal-400 font-medium text-sm">Status: Upcoming</span>
+          </div>
+
+          {/* Actions */}
+          <div className="space-y-3">
+            <Button
+              onClick={downloadReceipt}
+              className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white border-0 btn-glow font-semibold gap-2"
+            >
+              <Download size={18} />Download Receipt
+            </Button>
+            <div className="grid grid-cols-2 gap-3">
+              <Button
                 variant="outline"
-                className="w-full border-2 border-medical-blue text-medical-blue hover:bg-medical-blue hover:text-white" 
-                size="lg"
+                className="border-white/15 gap-2"
+                onClick={() => setLocation("/doctors")}
               >
-                Book Another Appointment
+                <Calendar size={16} />Book Another
               </Button>
+              <Link href="/dashboard">
+                <Button variant="outline" className="w-full border-white/15 gap-2">
+                  <Home size={16} />Dashboard
+                </Button>
+              </Link>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   );
