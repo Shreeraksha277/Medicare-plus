@@ -97,31 +97,31 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="hero-bg relative overflow-hidden min-h-[92vh] flex items-center">
+      <section className="hero-bg relative overflow-hidden min-h-[70vh] flex items-center">
         {/* Decorative blobs */}
         <div className="absolute top-20 right-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-teal-500/8 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute top-40 left-1/2 w-64 h-64 bg-purple-500/8 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left content */}
             <div className="fade-in">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-cyan-500/20 text-cyan-400 text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-cyan-500/20 text-cyan-400 text-sm font-medium mb-4">
                 <span className="w-2 h-2 rounded-full bg-cyan-400 pulse-dot" />
                 Your Trusted Healthcare Partner
               </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
                 Modern
                 <span className="gradient-text block">Healthcare</span>
                 At Your Fingertips
               </h1>
-              <p className="text-lg text-gray-300 mb-8 max-w-lg leading-relaxed">
+              <p className="text-lg text-gray-300 mb-6 max-w-lg leading-relaxed">
                 Connect with certified specialists, book appointments instantly, and manage your health records — all in one secure platform.
               </p>
 
               {/* Search */}
-              <div className="flex gap-2 mb-8 max-w-lg">
+              <div className="flex gap-2 mb-6 max-w-lg">
                 <div className="relative flex-1">
                   <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300" />
                   <Input
@@ -205,7 +205,7 @@ export default function Landing() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
             {stats.map((stat) => (
               <div key={stat.label} className="glass-card rounded-2xl p-4 text-center">
                 <div className="text-3xl font-bold gradient-text mb-1">{stat.value}</div>
@@ -217,10 +217,10 @@ export default function Landing() {
       </section>
 
       {/* Specialties */}
-      <section className="py-20 px-4">
+      <section className="py-14 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="section-title gradient-text mb-3">Browse By Specialty</h2>
+          <div className="text-center mb-10">
+            <h2 className="section-title gradient-text mb-2">Browse By Specialty</h2>
             <p className="text-gray-300 max-w-xl mx-auto">Find the right specialist for your health needs across our comprehensive range of medical specialties.</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -240,10 +240,10 @@ export default function Landing() {
       </section>
 
       {/* Features */}
-      <section className="py-20 px-4 bg-white/2">
+      <section className="py-14 px-4 bg-white/2">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="section-title mb-3">Why Choose <span className="gradient-text">MediCare Plus</span>?</h2>
+          <div className="text-center mb-10">
+            <h2 className="section-title mb-2">Why Choose <span className="gradient-text">MediCare Plus</span>?</h2>
             <p className="text-gray-300 max-w-xl mx-auto">We combine technology with compassionate care to deliver the best healthcare experience possible.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -261,10 +261,10 @@ export default function Landing() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 px-4">
+      <section className="py-14 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="section-title mb-3">What Our <span className="gradient-text">Patients Say</span></h2>
+          <div className="text-center mb-10">
+            <h2 className="section-title mb-2">What Our <span className="gradient-text">Patients Say</span></h2>
             <p className="text-gray-300 max-w-xl mx-auto">Thousands of patients trust MediCare Plus for their healthcare needs.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -292,13 +292,13 @@ export default function Landing() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-4">
+      <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="glass-card rounded-3xl p-10 text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-teal-500/5 pointer-events-none" />
             <div className="relative">
-              <h2 className="text-4xl font-bold mb-4">Ready to Take Control of Your Health?</h2>
-              <p className="text-gray-300 mb-8 max-w-lg mx-auto">Join thousands of patients who trust MediCare Plus for their healthcare journey.</p>
+              <h2 className="text-4xl font-bold mb-3">Ready to Take Control of Your Health?</h2>
+              <p className="text-gray-300 mb-6 max-w-lg mx-auto">Join thousands of patients who trust MediCare Plus for their healthcare journey.</p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link href="/register">
                   <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white border-0 btn-glow font-semibold gap-2">
@@ -318,9 +318,9 @@ export default function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/8 py-12 px-4">
+      <footer className="border-t border-white/8 py-10 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-10">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center">
