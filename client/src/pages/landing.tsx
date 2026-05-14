@@ -154,7 +154,7 @@ export default function Landing() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-white/15 text-foreground hover:bg-white/5 font-semibold gap-2"
+                    className="border-white/15 text-white hover:bg-white/5 font-semibold gap-2"
                   >
                     Browse Doctors
                     <ChevronRight size={18} />
@@ -194,11 +194,11 @@ export default function Landing() {
                 {/* Floating badges */}
                 <div className="absolute -top-6 -right-6 glass-card rounded-2xl px-4 py-3 flex items-center gap-2">
                   <CheckCircle2 size={18} className="text-teal-400" />
-                  <span className="text-sm font-medium">Appointment Confirmed!</span>
+                  <span className="text-sm font-medium text-white">Appointment Confirmed!</span>
                 </div>
                 <div className="absolute -bottom-6 -left-6 glass-card rounded-2xl px-4 py-3 flex items-center gap-2">
                   <Star size={18} className="text-amber-400 fill-amber-400" />
-                  <span className="text-sm font-medium">4.9 Top Rated</span>
+                  <span className="text-sm font-medium text-white">4.9 Top Rated</span>
                 </div>
               </div>
             </div>
