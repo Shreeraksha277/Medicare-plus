@@ -99,11 +99,11 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-  }
   html {
     scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
   }
 }
 
@@ -224,7 +224,7 @@
 
   /* Rating stars */
   .star-filled { color: #f59e0b; }
-  .star-empty { color: #374151; }
+  .star-empty { color: #6b7280; }
 
   /* Scrollbar */
   ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -256,7 +256,7 @@
 
   /* Section titles */
   .section-title {
-    @apply text-3xl md:text-4xl font-bold;
+    @apply text-3xl md:text-4xl font-bold text-foreground;
   }
 
   /* Input dark override */
@@ -266,10 +266,36 @@
     -webkit-box-shadow: 0 0 0 1000px hsl(var(--input)) inset !important;
     -webkit-text-fill-color: hsl(var(--foreground)) !important;
   }
+
+  /* Ensure text is always visible */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-foreground;
+  }
+
+  p {
+    @apply text-foreground;
+  }
+
+  label {
+    @apply text-foreground;
+  }
+
+  span {
+    @apply text-foreground;
+  }
+
+  button {
+    @apply text-foreground;
+  }
 }
 
 @layer utilities {
   .text-balance { text-wrap: balance; }
+  
+  /* Visibility utilities */
+  .text-dark { @apply text-slate-900; }
+  .text-light { @apply text-white; }
+  .text-visible { @apply text-foreground; }
 }
 
 @keyframes fadeIn {
