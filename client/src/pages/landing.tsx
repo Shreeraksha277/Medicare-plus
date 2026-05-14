@@ -111,7 +111,7 @@ export default function Landing() {
                 <span className="w-2 h-2 rounded-full bg-cyan-400 pulse-dot" />
                 Your Trusted Healthcare Partner
               </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-white">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
                 Modern
                 <span className="gradient-text block">Healthcare</span>
                 At Your Fingertips
@@ -123,7 +123,7 @@ export default function Landing() {
               {/* Search */}
               <div className="flex gap-2 mb-8 max-w-lg">
                 <div className="relative flex-1">
-                  <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                  <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300" />
                   <Input
                     placeholder="Search doctors, specialties..."
                     className="pl-10 h-12 glass border-white/10 focus:border-cyan-500/50 bg-transparent"
@@ -173,8 +173,8 @@ export default function Landing() {
                       <Stethoscope size={32} className="text-white" />
                     </div>
                     <div>
-                      <div className="font-bold text-lg text-white">MediCare Plus</div>
-                      <div className="text-muted-foreground text-sm">Healthcare Platform</div>
+                      <div className="font-bold text-lg">MediCare Plus</div>
+                      <div className="text-gray-300 text-sm">Healthcare Platform</div>
                     </div>
                   </div>
                   <div className="space-y-3">
@@ -184,7 +184,7 @@ export default function Landing() {
                       { label: "Patient Rating", value: "4.8★", color: "text-amber-400" },
                     ].map((item) => (
                       <div key={item.label} className="flex justify-between items-center p-3 rounded-xl bg-white/4">
-                        <span className="text-muted-foreground text-sm">{item.label}</span>
+                        <span className="text-gray-300 text-sm">{item.label}</span>
                         <span className={`font-bold ${item.color}`}>{item.value}</span>
                       </div>
                     ))}
@@ -194,11 +194,11 @@ export default function Landing() {
                 {/* Floating badges */}
                 <div className="absolute -top-6 -right-6 glass-card rounded-2xl px-4 py-3 flex items-center gap-2">
                   <CheckCircle2 size={18} className="text-teal-400" />
-                  <span className="text-sm font-medium text-white">Appointment Confirmed!</span>
+                  <span className="text-sm font-medium">Appointment Confirmed!</span>
                 </div>
                 <div className="absolute -bottom-6 -left-6 glass-card rounded-2xl px-4 py-3 flex items-center gap-2">
                   <Star size={18} className="text-amber-400 fill-amber-400" />
-                  <span className="text-sm font-medium text-white">4.9 Top Rated</span>
+                  <span className="text-sm font-medium">4.9 Top Rated</span>
                 </div>
               </div>
             </div>
@@ -209,7 +209,7 @@ export default function Landing() {
             {stats.map((stat) => (
               <div key={stat.label} className="glass-card rounded-2xl p-4 text-center">
                 <div className="text-3xl font-bold gradient-text mb-1">{stat.value}</div>
-                <div className="text-muted-foreground text-sm">{stat.label}</div>
+                <div className="text-gray-300 text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -221,7 +221,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="section-title gradient-text mb-3">Browse By Specialty</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">Find the right specialist for your health needs across our comprehensive range of medical specialties.</p>
+            <p className="text-gray-300 max-w-xl mx-auto">Find the right specialist for your health needs across our comprehensive range of medical specialties.</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {specialties.map(({ icon: Icon, label, color, count }) => (
@@ -230,8 +230,8 @@ export default function Landing() {
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300`}>
                     <Icon size={28} className="text-white" />
                   </div>
-                  <div className="font-semibold text-sm mb-1 text-white">{label}</div>
-                  <div className="text-xs text-muted-foreground">{count}</div>
+                  <div className="font-semibold text-sm mb-1">{label}</div>
+                  <div className="text-xs text-gray-300">{count}</div>
                 </div>
               </Link>
             ))}
@@ -244,7 +244,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="section-title mb-3">Why Choose <span className="gradient-text">MediCare Plus</span>?</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">We combine technology with compassionate care to deliver the best healthcare experience possible.</p>
+            <p className="text-gray-300 max-w-xl mx-auto">We combine technology with compassionate care to deliver the best healthcare experience possible.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map(({ icon: Icon, title, desc, color, bg }) => (
@@ -252,8 +252,8 @@ export default function Landing() {
                 <div className={`w-12 h-12 rounded-xl ${bg} flex items-center justify-center mb-4`}>
                   <Icon size={24} className={color} />
                 </div>
-                <h3 className="font-bold text-lg mb-2 text-white">{title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
+                <h3 className="font-bold text-lg mb-2">{title}</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -265,7 +265,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="section-title mb-3">What Our <span className="gradient-text">Patients Say</span></h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">Thousands of patients trust MediCare Plus for their healthcare needs.</p>
+            <p className="text-gray-300 max-w-xl mx-auto">Thousands of patients trust MediCare Plus for their healthcare needs.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((t) => (
@@ -275,14 +275,14 @@ export default function Landing() {
                     <Star key={i} size={16} className="text-amber-400 fill-amber-400" />
                   ))}
                 </div>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">"{t.text}"</p>
+                <p className="text-gray-300 text-sm leading-relaxed mb-6">"{t.text}"</p>
                 <div className="flex items-center gap-3">
                   <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white font-bold text-sm`}>
                     {t.avatar}
                   </div>
                   <div>
-                    <div className="font-semibold text-sm text-white">{t.name}</div>
-                    <div className="text-xs text-muted-foreground">{t.role}</div>
+                    <div className="font-semibold text-sm">{t.name}</div>
+                    <div className="text-xs text-gray-300">{t.role}</div>
                   </div>
                 </div>
               </div>
@@ -294,11 +294,11 @@ export default function Landing() {
       {/* CTA */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="glass-card rounded-3xl p-10 text-center relative overflow-hidden">H
+          <div className="glass-card rounded-3xl p-10 text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-teal-500/5 pointer-events-none" />
             <div className="relative">
-              <h2 className="text-4xl font-bold mb-4 text-white">Ready to Take Control of Your Health?</h2>
-              <p className="text-muted-foreground mb-8 max-w-lg mx-auto">Join thousands of patients who trust MediCare Plus for their healthcare journey.</p>
+              <h2 className="text-4xl font-bold mb-4">Ready to Take Control of Your Health?</h2>
+              <p className="text-gray-300 mb-8 max-w-lg mx-auto">Join thousands of patients who trust MediCare Plus for their healthcare journey.</p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link href="/register">
                   <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white border-0 btn-glow font-semibold gap-2">
@@ -328,10 +328,10 @@ export default function Landing() {
                 </div>
                 <span className="font-bold gradient-text">MediCare Plus</span>
               </div>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">Your trusted healthcare platform connecting patients with certified specialists across India.</p>
+              <p className="text-gray-300 text-sm leading-relaxed mb-4">Your trusted healthcare platform connecting patients with certified specialists across India.</p>
               <div className="flex gap-3">
                 {[Facebook, Twitter, Instagram, Youtube].map((Icon, i) => (
-                  <button key={i} className="w-8 h-8 rounded-lg glass flex items-center justify-center text-muted-foreground hover:text-cyan-400 transition-colors">
+                  <button key={i} className="w-8 h-8 rounded-lg glass flex items-center justify-center text-gray-300 hover:text-cyan-400 transition-colors">
                     <Icon size={16} />
                   </button>
                 ))}
@@ -339,7 +339,7 @@ export default function Landing() {
             </div>
             <div>
               <h4 className="font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <ul className="space-y-2 text-sm text-gray-300">
                 {[["Home", "/"], ["Hospitals", "/hospitals"], ["Doctors", "/doctors"], ["About Us", "/about"], ["Contact", "/contact"]].map(([label, href]) => (
                   <li key={label}><Link href={href} className="hover:text-cyan-400 transition-colors">{label}</Link></li>
                 ))}
@@ -347,7 +347,7 @@ export default function Landing() {
             </div>
             <div>
               <h4 className="font-semibold mb-4">Specialties</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <ul className="space-y-2 text-sm text-gray-300">
                 {["Cardiology", "Neurology", "Orthopedics", "Pediatrics", "Dermatology", "Psychiatry"].map((s) => (
                   <li key={s}><Link href={`/doctors?specialty=${s.toLowerCase()}`} className="hover:text-cyan-400 transition-colors">{s}</Link></li>
                 ))}
@@ -355,14 +355,14 @@ export default function Landing() {
             </div>
             <div>
               <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-3 text-sm text-muted-foreground">
+              <ul className="space-y-3 text-sm text-gray-300">
                 <li className="flex items-center gap-2"><MapPin size={14} className="text-cyan-400" />Bangalore, Karnataka</li>
                 <li className="flex items-center gap-2"><Phone size={14} className="text-cyan-400" />+91 80 1234 5678</li>
                 <li className="flex items-center gap-2"><Mail size={14} className="text-cyan-400" />support@medicareplus.in</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-white/8 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+          <div className="border-t border-white/8 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-300">
             <p>© 2026 MediCare Plus. All rights reserved.</p>
             <div className="flex gap-6">
               <span className="hover:text-foreground cursor-pointer transition-colors">Privacy Policy</span>
