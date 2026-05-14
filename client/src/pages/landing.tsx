@@ -111,12 +111,12 @@ export default function Landing() {
                 <span className="w-2 h-2 rounded-full bg-cyan-400 pulse-dot" />
                 Your Trusted Healthcare Partner
               </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-white">
                 Modern
                 <span className="gradient-text block">Healthcare</span>
                 At Your Fingertips
               </h1>
-              <p className="text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed">
+              <p className="text-lg text-gray-300 mb-8 max-w-lg leading-relaxed">
                 Connect with certified specialists, book appointments instantly, and manage your health records — all in one secure platform.
               </p>
 
@@ -173,7 +173,7 @@ export default function Landing() {
                       <Stethoscope size={32} className="text-white" />
                     </div>
                     <div>
-                      <div className="font-bold text-lg">MediCare Plus</div>
+                      <div className="font-bold text-lg text-white">MediCare Plus</div>
                       <div className="text-muted-foreground text-sm">Healthcare Platform</div>
                     </div>
                   </div>
@@ -194,11 +194,11 @@ export default function Landing() {
                 {/* Floating badges */}
                 <div className="absolute -top-6 -right-6 glass-card rounded-2xl px-4 py-3 flex items-center gap-2">
                   <CheckCircle2 size={18} className="text-teal-400" />
-                  <span className="text-sm font-medium">Appointment Confirmed!</span>
+                  <span className="text-sm font-medium text-white">Appointment Confirmed!</span>
                 </div>
                 <div className="absolute -bottom-6 -left-6 glass-card rounded-2xl px-4 py-3 flex items-center gap-2">
                   <Star size={18} className="text-amber-400 fill-amber-400" />
-                  <span className="text-sm font-medium">4.9 Top Rated</span>
+                  <span className="text-sm font-medium text-white">4.9 Top Rated</span>
                 </div>
               </div>
             </div>
@@ -230,7 +230,7 @@ export default function Landing() {
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300`}>
                     <Icon size={28} className="text-white" />
                   </div>
-                  <div className="font-semibold text-sm mb-1">{label}</div>
+                  <div className="font-semibold text-sm mb-1 text-white">{label}</div>
                   <div className="text-xs text-muted-foreground">{count}</div>
                 </div>
               </Link>
@@ -252,7 +252,7 @@ export default function Landing() {
                 <div className={`w-12 h-12 rounded-xl ${bg} flex items-center justify-center mb-4`}>
                   <Icon size={24} className={color} />
                 </div>
-                <h3 className="font-bold text-lg mb-2">{title}</h3>
+                <h3 className="font-bold text-lg mb-2 text-white">{title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
               </div>
             ))}
@@ -281,7 +281,7 @@ export default function Landing() {
                     {t.avatar}
                   </div>
                   <div>
-                    <div className="font-semibold text-sm">{t.name}</div>
+                    <div className="font-semibold text-sm text-white">{t.name}</div>
                     <div className="text-xs text-muted-foreground">{t.role}</div>
                   </div>
                 </div>
@@ -294,10 +294,10 @@ export default function Landing() {
       {/* CTA */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="glass-card rounded-3xl p-10 text-center relative overflow-hidden">
+          <div className="glass-card rounded-3xl p-10 text-center relative overflow-hidden">H
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-teal-500/5 pointer-events-none" />
             <div className="relative">
-              <h2 className="text-4xl font-bold mb-4">Ready to Take Control of Your Health?</h2>
+              <h2 className="text-4xl font-bold mb-4 text-white">Ready to Take Control of Your Health?</h2>
               <p className="text-muted-foreground mb-8 max-w-lg mx-auto">Join thousands of patients who trust MediCare Plus for their healthcare journey.</p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link href="/register">
